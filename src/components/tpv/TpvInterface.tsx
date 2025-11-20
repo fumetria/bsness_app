@@ -4,7 +4,7 @@ import CategorySection from "./CategorySection";
 import { useEffect, useState } from "react";
 import { articles } from "@/utils/data.js";
 import ArticleLinesTableAsideBtns from "./ArticleLinesTableAsideBtns";
-import type { Article, ArticleLine } from "../types/definitions.ts";
+import type { Article, ArticleLine } from "@/types/definitions.ts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDoorOpen, faPrint } from "@fortawesome/free-solid-svg-icons";
 import UpdateForm from "./UpdateForm";

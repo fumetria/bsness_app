@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import type { Article } from "../types/definitions";
+import type { Article } from "@/types/definitions";
 
 function ArticleButton({
   article,
