@@ -1,4 +1,4 @@
-import type { ArticleLine } from "../types/definitions";
+import type { ArticleLine } from "@/types/definitions";
 
 export default function BillLine({
   article,
