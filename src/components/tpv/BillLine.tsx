@@ -18,7 +18,11 @@ export default function BillLine({
             : "text-blue-900 cursor-pointer"
         }
         key={article.id}
-        onClick={() => handleSelectArticleLine(article)}
+        onClick={() => {
+          if (article && handleSelectArticleLine) {
+            handleSelectArticleLine(article);
+          }
+        }}
       >
         <td className="text-center">{article.id}</td>
         <td className="uppercase">{article.name}</td>

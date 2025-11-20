@@ -6,14 +6,18 @@ function AsideButton({
   handleDeleteLine,
 }: {
   label: string;
-  selectedArticleLine?: ArticleLine;
+  selectedArticleLine?: ArticleLine | null;
   handleDeleteLine?: (articleLine: ArticleLine) => void;
 }) {
   return (
     <>
       <div
         className="bg-stone-300 text-stone-100 2xl:text-2xl font-semibold h-full w-full flex justify-center items-center cursor-pointer rounded"
-        onClick={() => handleDeleteLine(selectedArticleLine)}
+        onClick={() => {
+          if (selectedArticleLine && handleDeleteLine) {
+            handleDeleteLine(selectedArticleLine);
+          }
+        }}
       >
         {label}
       </div>

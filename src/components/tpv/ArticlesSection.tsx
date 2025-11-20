@@ -13,10 +13,14 @@ function ArticleButton({
     <>
       <div
         key={article.id}
-        onClick={() => handleNewArticleLine(article)}
+        onClick={() => {
+          if (article && handleNewArticleLine) {
+            handleNewArticleLine(article);
+          }
+        }}
         className="grid grid_row_[1fr_auto] bg-stone-100 justify-items-center items-center size-24 2xl:size-34 cursor-pointer px-1 rounded shadow"
       >
-        <div>
+        <div title={article.name}>
           <h3 className="text-3xl text-center font-semibold text-red-600">
             {article.id}
           </h3>
@@ -55,7 +59,11 @@ export default function ArticlesSection({
             <ArticleButton
               key={article.id}
               article={article}
-              handleNewArticleLine={() => handleNewArticleLine(article)}
+              handleNewArticleLine={() => {
+                if (article && handleNewArticleLine) {
+                  handleNewArticleLine(article);
+                }
+              }}
               isSelected={isSelected}
             />
           ))}

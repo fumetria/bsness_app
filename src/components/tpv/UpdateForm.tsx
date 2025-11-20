@@ -6,7 +6,7 @@ export default function UpdateForm({
   handleUpdateArticleLine,
 }: {
   selectedArticleLine?: ArticleLine;
-  handleUpdateArticleLine;
+  handleUpdateArticleLine: (articleLine: ArticleLine) => void;
 }) {
   const [articleLine, setArticle] = useState<ArticleLine>();
   const [formData, setFormData] = useState({
@@ -18,17 +18,20 @@ export default function UpdateForm({
   });
 
   useEffect(() => {
-    if (selectedArticleLine) {
-      setFormData(selectedArticleLine);
-    } else {
-      setFormData({
-        id: "",
-        name: "",
-        details: "",
-        quantity: "",
-        price: "",
-      });
-    }
+    const setForm = () => {
+      if (selectedArticleLine) {
+        setFormData(selectedArticleLine);
+      } else {
+        setFormData({
+          id: "",
+          name: "",
+          details: "",
+          quantity: "",
+          price: "",
+        });
+      }
+    };
+    setForm();
   }, [selectedArticleLine]);
 
   const handleChange = (event) => {
