@@ -19,7 +19,7 @@ export default function TpvInterface() {
   const [totalBill, setTotalBill] = useState(0);
   const URL = "http://localhost:6500";
   const [selectedArticleLine, setSelectedArticleLine] =
-    useState<ArticleLine | null>(null);
+    useState<ArticleLine>(null);
 
   const handleCategorySelect = (category: string) => {
     setSelectedCategory(category);
