@@ -19,7 +19,7 @@ export default function TpvInterface() {
   const [totalBill, setTotalBill] = useState(0);
   const URL = "http://localhost:6500";
   const [selectedArticleLine, setSelectedArticleLine] =
-    useState<ArticleLine>(null);
+    useState<ArticleLine | null>(null);
 
   const handleCategorySelect = (category: string) => {
     setSelectedCategory(category);
@@ -76,22 +76,29 @@ export default function TpvInterface() {
         updatedLines[existingIndex] = existingLine;
         return updatedLines;
       }
+      return prevLines;
     });
     setSelectedArticleLine(null);
   };
   useEffect(() => {
-    const aList = articles.filter(
-      (article: Article) => article.category === selectedCategory
-    );
-    setArticlesList(aList);
+    const updateArticleList = () => {
+      const aList = articles.filter(
+        (article) => article.category === selectedCategory
+      );
+      setArticlesList(aList);
+    };
+    updateArticleList();
   }, [selectedCategory]);
 
   useEffect(() => {
-    const total = articlesLines.reduce(
-      (totals, articleLine: ArticleLine) => totals + articleLine.total,
-      0
-    );
-    setTotalBill(total);
+    const updateTotaBill = () => {
+      const total = articlesLines.reduce(
+        (totals, articleLine: ArticleLine) => totals + articleLine.total,
+        0
+      );
+      setTotalBill(total);
+    };
+    updateTotaBill();
   }, [articlesLines]);
 
   const handleSendData = async () => {

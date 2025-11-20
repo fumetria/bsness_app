@@ -11,6 +11,6 @@ export type Article = {
     id: string;
     name: string;
     category: string;
-    pvp: string;
+    pvp: number;
 
 }
